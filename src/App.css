@@ -1,0 +1,31 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(94, 23, 235, 0.1);
+}
+
+/* Page specific styles */
+h1 {
+  color: #5E17EB; /* Vibrant purple */
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .page-content {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,361 @@
+/* Definición de variables de color y tamaño */
+:root {
+    /* Nueva paleta de colores (Teal/Dorado) */
+    --sidebar-bg: #5E17EB; /* Vibrant purple */
+    --sidebar-active-bg: #2A9D8F; /* Teal medio */
+    --sidebar-active-border: #E9C46A; /* Amarillo/Dorado */
+    --submenu-bg: #8A4FFF; /* Medium purple */
+    --submenu-hover-bg: #5E17EB; /* Vibrant purple */
+    --text-light: #FFFFFF; /* Blanco */
+    --text-light-secondary: #E0E0E0; /* Blanco pálido para items no activos */
+    --text-dark: #333333; /* Gris oscuro estándar */
+    --border-color: #8EAAA0; /* Teal desaturado para bordes sutiles */
+    --header-bg: #FFFFFF; /* Blanco para cabecera */
+    --body-bg: #F8F9FA; /* Gris muy claro para fondo del cuerpo */
+  
+    /* Tamaños */
+    --header-height: 60px; /* Altura de la cabecera ajustada */
+    --sidebar-width: 250px; /* Ancho del sidebar */
+    --primary-color: #8A4FFF; /* Medium purple */
+    --accent-color: #FF8E00; /* Bright orange */
+  }
+  
+  /* Reset básico y configuración global */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-dark); /* Color de texto por defecto */
+  }
+  
+  /* Contenedor principal de la aplicación */
+  .app-container{
+    display: flex;
+    min-height: 100vh; /* Corregido: min-height para ocupar toda la altura */
+  }
+  
+  /* --- ESTILOS DEL SIDEBAR --- */
+  .sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    color: var(--text-light); /* Color base del texto en sidebar */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15); /* Sombra más sutil */
+    transition: transform 0.3s ease-in-out; /* Transición con transform */
+    height: 100vh;
+    position: fixed; /* Fijo en la pantalla */
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem; /* Espaciado superior */
+    z-index: 100; /* Asegura que esté por encima de otro contenido */
+    transform: translateX(0); /* Estado inicial visible */
+  }
+  
+  /* Estado oculto del sidebar */
+  .sidebar.hidden{
+    transform: translateX(calc(-1 * var(--sidebar-width))); /* Desplaza fuera de la vista */
+  }
+  
+  /* Botón para cerrar el sidebar (flecha atrás) */
+  .sidebar-button-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+    padding: 0 0.75rem; /* Espaciado horizontal */
+    margin-bottom: 0.5rem; /* Espacio debajo del botón */
+  }
+  
+  .sidebar-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; /* Botón circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 40px; /* Tamaño ajustado */
+    height: 40px;
+    color: var(--text-light-secondary); /* Color inicial del icono */
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  .sidebar-icon-back{
+    font-size: 1.8rem; /* Tamaño ajustado del icono */
+  }
+  
+  .sidebar-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil al pasar el ratón */
+    color: var(--text-light); /* Icono más brillante al pasar el ratón */
+  }
+  
+  /* Logo en el sidebar */
+  .sidebar-logo {
+    padding: 0.5rem 1rem; /* Espaciado ajustado */
+    text-align: center;
+    margin-bottom: 1rem; /* Espacio debajo del logo */
+  }
+  
+  .sidebar-logo img {
+    width: 75%; /* Tamaño del logo ajustado */
+    height: auto;
+    max-width: 150px; /* Límite de tamaño */
+  }
+  
+  /* Menú de navegación principal */
+  .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-color); /* Borde superior sutil */
+    flex-grow: 1; /* Permite que el menú ocupe el espacio restante */
+    overflow-y: auto; /* Scroll si el contenido es muy largo */
+  }
+  
+  /* --- ESTILOS DEL SUBMENÚ --- */
+  .sidebar-item-with-submenu{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border-color); /* Línea divisoria */
+  }
+  
+  /* Disparador del submenú (ej. "Enfermedades") */
+  .submenu-trigger {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem; /* Espaciado interno */
+    color: var(--text-light-secondary); /* Color del texto */
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    justify-content: space-between; /* Espacio entre texto e icono de flecha */
+  }
+  
+  .submenu-trigger:hover {
+    background-color: var(--sidebar-active-bg); /* Fondo al pasar el ratón */
+    color: var(--text-light); /* Texto más brillante al pasar el ratón */
+  }
+  
+  /* Icono de flecha (arriba/abajo) */
+  .submenu-icon {
+    margin-left: auto; /* Empuja el icono a la derecha */
+    font-size: 1rem; /* Tamaño del icono */
+    transition: transform 0.3s ease; /* Transición suave para rotación (opcional) */
+  }
+  
+  /* Contenedor del submenú */
+  .submenu {
+    max-height: 0; /* Oculto por defecto */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Animación de despliegue */
+    background-color: var(--submenu-bg); /* Fondo del submenú */
+  }
+  
+  /* Estado abierto del submenú */
+  .submenu.open {
+    max-height: 500px; /* Altura máxima suficiente para los items */
+    transition: max-height 0.4s ease-in; /* Animación al abrir */
+  }
+  
+  /* Items dentro del submenú */
+  .submenu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem 0.75rem 2.5rem; /* Indentación para items de submenú */
+    color: var(--text-light-secondary);
+    text-decoration: none;
+    font-size: 0.9rem; /* Texto ligeramente más pequeño */
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  
+  /* Estado hover y activo para items del submenú */
+  .submenu-item:hover,
+  .submenu-item.active { /* Asumiendo que react-router añade la clase 'active' */
+    background-color: var(--submenu-hover-bg);
+    color: var(--text-light);
+  }
+  
+  /* --- ESTILOS DE ITEMS NORMALES DEL MENÚ --- */
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem; /* Espaciado */
+    color: var(--text-light-secondary);
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-left-color 0.2s ease;
+    border-left: 3px solid transparent; /* Borde izquierdo transparente por defecto */
+    border-bottom: 1px solid var(--border-color); /* Línea divisoria */
+  }
+  
+  /* Iconos dentro de los items del menú */
+  .sidebar-icon{
+    font-size: 1.2rem; /* Tamaño coherente del icono */
+    margin-right: 1rem; /* Espacio entre icono y texto */
+    width: 20px; /* Ancho fijo para alineación */
+    text-align: center;
+  }
+  
+  /* Estado hover y activo para items del menú */
+  .sidebar-item:hover,
+  .sidebar-item.active { /* Asumiendo que react-router añade la clase 'active' */
+    background-color: var(--sidebar-active-bg); /* Fondo activo */
+    color: var(--text-light); /* Texto activo */
+    border-left: 3px solid var(--sidebar-active-border); /* Borde dorado indicador */
+  }
+  
+  /* --- ESTILOS DEL CONTENEDOR PRINCIPAL Y HEADER --- */
+  
+  /* Contenedor del contenido principal */
+  .main-container{
+    flex-grow: 1; /* Ocupa el espacio restante */
+    display: flex;
+    flex-direction: column;
+    margin-left: var(--sidebar-width); /* Deja espacio para el sidebar visible */
+    transition: margin-left 0.3s ease-in-out; /* Transición suave al abrir/cerrar sidebar */
+    position: relative; /* Necesario para algunos layouts internos */
+    width: calc(100% - var(--sidebar-width)); /* Ancho inicial */
+  }
+  
+  /* Estado expandido cuando el sidebar está oculto */
+  .main-container.expanded {
+    margin-left: 0; /* Ocupa todo el ancho */
+    width: 100%;
+  }
+  
+  /* Cabecera */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    background-color: var(--sidebar-bg);
+    color: var(--text-light);
+    padding: 0 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  /* Logo container */
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-logo {
+    height: 40px;
+    width: auto;
+  }
+  
+  /* Navigation menu */
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  /* Nav items */
+  .nav-item {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-item:hover, 
+  .nav-item.active {
+    color: var(--accent-color);
+  }
+  
+  .nav-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  /* Submenu styles */
+  .nav-item-with-submenu {
+    position: relative;
+  }
+  
+  .submenu-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .submenu-icon {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+    min-width: 180px;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    z-index: 100;
+  }
+  
+  .submenu.open {
+    max-height: 200px;
+  }
+  
+  .submenu-item {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .submenu-item:hover,
+  .submenu-item.active {
+    background-color: var(--sidebar-bg);
+  }
+  
+  /* Mobile menu toggle */
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+  }
+  
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    border-radius: 2px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .nav-menu {
+      display: none; /* Hide regular menu on mobile */
+    }
+    
+    .menu-toggle {
+      display: flex; /* Show hamburger menu */
+    }
+    
+    /* Add mobile menu logic here */
+  }
