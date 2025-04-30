@@ -12,7 +12,7 @@ const Liver = () => {
         <p>El hígado es un órgano vital que desempeña un papel crucial en el metabolismo, la desintoxicación y la producción de proteínas. Sin embargo, puede verse afectado por diversas enfermedades, como la cirrosis hepática y el hígado graso.</p>
         <p>Haz click en los botones para ver más sobre la enfermedad</p>
         <div className="liver-model">
-            <LiverModel modelPath="../../../public/modelos/healthy-liver.glb" scale={5}/>
+            <LiverModel modelPath="modelos/healthy-liver.glb" scale={5}/>
         </div> 
         <div className="liver-card-buttons">
           <Link to="/organo/cirrosis-hepatica" className="card-button">
