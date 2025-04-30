@@ -7,7 +7,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     const handleClick = useCallback ( () => {
-        navigate("/higado", {
+        navigate("/organo", {
             state: { userData: { displayName: "Usuario" } },
         });
     }, [navigate]);
