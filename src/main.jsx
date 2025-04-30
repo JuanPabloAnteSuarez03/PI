@@ -19,15 +19,14 @@ createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Layout>
       <Routes>
-        <Route index path='/' element = {<Home/>}/>
-        <Route path='quiz' element = {<Quiz/>}/>
-        <Route path='*' element = {<NotFound/>}/>
+        <Route index path='/' element={<Home/>}/>
+        <Route path='quiz' element={<Quiz/>}/>
+        <Route path='*' element={<NotFound/>}/>
         <Route path='contacto' element={<Contact/>}/>
         <Route path='sobre-nosotros' element={<AboutUs/>}/>
-        <Route path='organo' element = {<Liver/>}>
-          <Route path='cirrosis-hepatica' element = {<Cirrhosis/>}/>
-          <Route path='higado-graso' element = {<FattyLiver/>}/>
-        </Route>
+        <Route path='organo' element={<Liver/>}/>
+        <Route path='organo/higado-graso' element={<FattyLiver/>}/>
+        <Route path='organo/cirrosis-hepatica' element={<Cirrhosis/>}/>
       </Routes>
     </Layout>
   </BrowserRouter>
