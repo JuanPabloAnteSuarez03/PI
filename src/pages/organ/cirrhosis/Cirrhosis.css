@@ -106,6 +106,69 @@
     margin: 3rem 0 2rem;
     color: #333;
   }
+
+  .cirrhosis-tab-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 3rem 2rem;
+  text-align: left;
+  max-width: 1200px;
+  margin: 3rem auto 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+  .cirrhosis-tabs-header {
+  display: flex;
+  border-bottom: 2px solid #333;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  justify-content: center;
+  padding-bottom: 5px;
+  -webkit-overflow-scrolling: touch;
+}
+
+  .cirrhosis-tab-button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  border-bottom: 5px solid transparent;
+  background-color: transparent;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2b3133;
+  flex-shrink: 0;
+  outline: none;
+  white-space: nowrap;
+}
+
+  .cirrhosis-tab-button:hover {
+  background-color: #e9f2f9;
+  border-bottom-color: #a0a0a0;
+}
+
+  .cirrhosis-tab-button.active {
+  color: #2a5c82;
+  border-bottom-color: #2a5c82;
+  font-weight: bold;
+}
+
+  .cirrhosis-tab-content {
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 400px;
+}
+
+  .cirrhosis-tab-pane {
+  padding-top: 0;
+  opacity: 0;
+  animation: smoothFadeIn 0.4s ease-in-out forwards;
+}
   
   /* Estilos responsivos */
   @media (max-width: 768px) {
