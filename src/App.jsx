@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/organo" element={<Liver />} />
           <Route path="/organo/higado-graso" element={<FattyLiver />} />
-          <Route path="/organo/cirrosis" element={<Cirrhosis />} />
+          <Route path="/organo/cirrosis-hepatica" element={<Cirrhosis />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/sobre-nosotros" element={<AboutUs />} />

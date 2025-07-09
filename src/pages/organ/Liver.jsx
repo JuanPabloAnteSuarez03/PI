@@ -24,7 +24,7 @@ const Liver = () => {
         </div>
 
         <div className="disease-cards-container">
-          <Link to="/organo/cirrosis" className="disease-card">
+          <Link to="/organo/cirrosis-hepatica" className="disease-card">
             <div className="card-icon">🩺</div>
             <h2>Cirrosis Hepática</h2>
             <p>Descubre cómo la cicatrización avanzada afecta la función del hígado.</p>
