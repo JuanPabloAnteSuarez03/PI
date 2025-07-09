@@ -1,28 +1,42 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Liver.css';
-import '../organ/cirrhosis/Cirrhosis';
-import '../organ/fatty-liver/FattyLiver';
-import '../organ/LiverModel';
-import LiverModel from '../organ/LiverModel';
+import LiverModel from './LiverModel';
 
 const Liver = () => {
     return (
-      <div className="liver-container">
-        <h1>Enfermedades del Hígado</h1>
-        <p>El hígado es un órgano vital que desempeña un papel crucial en el metabolismo, la desintoxicación y la producción de proteínas. Sin embargo, puede verse afectado por diversas enfermedades, como la cirrosis hepática y el hígado graso.</p>
-        <p>Haz click en los botones para ver más sobre la enfermedad</p>
-        <div className="liver-model">
-            <LiverModel modelPath="modelos/healthy-liver.glb" scale={5}/>
-        </div> 
-        <div className="liver-card-buttons">
-          <Link to="/organo/cirrosis-hepatica" className="card-button">
-            Cirrosis hepática
+      <div className="liver-page-container">
+        <div className="liver-intro-section">
+          <div className="liver-intro-text">
+            <h1>Explora el Hígado Sano</h1>
+            <p>
+              El hígado es uno de los órganos más grandes y esenciales del cuerpo.
+              Funciona como una planta de procesamiento central, desintoxicando la sangre,
+              metabolizando nutrientes y produciendo bilis para la digestión.
+            </p>
+            <p>
+              Usa el modelo 3D para explorar su anatomía y aprende sobre las
+              enfermedades comunes que pueden afectarlo en las siguientes secciones.
+            </p>
+          </div>
+          <div className="liver-main-model-container">
+            <LiverModel modelPath="/modelos/healthy-liver.glb" scale={2.5} />
+          </div>
+        </div>
+
+        <div className="disease-cards-container">
+          <Link to="/organo/cirrosis" className="disease-card">
+            <div className="card-icon">🩺</div>
+            <h2>Cirrosis Hepática</h2>
+            <p>Descubre cómo la cicatrización avanzada afecta la función del hígado.</p>
+            <span className="card-link">Saber más →</span>
           </Link>
-          <Link to="/organo/higado-graso" className="card-button">
-            Hígado Graso
+          <Link to="/organo/higado-graso" className="disease-card">
+            <div className="card-icon">🍔</div>
+            <h2>Hígado Graso</h2>
+            <p>Entiende cómo la acumulación de grasa puede dañar este órgano vital.</p>
+            <span className="card-link">Saber más →</span>
           </Link>
         </div>
-        <Outlet />
       </div>
     );
   }
