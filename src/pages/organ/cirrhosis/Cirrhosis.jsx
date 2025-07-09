@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import { Link } from 'react-router-dom';
 import './Cirrhosis.css';
 import LiverModel from '../LiverModel';
 
@@ -13,12 +14,13 @@ export default function Cirrhosis(){
     {
       id:"prevention",
       title: "Prevención",
+      icon: "🛡️",
       content: (
            <div className="submodel-card">
              <h3>Prevención</h3>
              <LiverModel
-               modelPath="/modelos/liquor-bottle.glb"
-               scale={3.8}
+               modelPath="/modelos/drinking-prevention.glb"
+               scale={1.5}
              />
              <ul>
                <li>Limitar el consumo de alcohol.</li>
@@ -32,12 +34,13 @@ export default function Cirrhosis(){
     {
       id:"symptoms",
       title: "Síntomas",
+      icon: "🩺",
       content: (
           <div className="submodel-card">
               <h3>Síntomas</h3>
               <LiverModel
-                modelPath="/modelos/kidney.glb"
-                scale={2.8}
+                modelPath="/modelos/jaundice-symtomp.glb"
+                scale={1.5}
               />
               <ul>
                 <li>Perdida de peso.</li>
@@ -53,12 +56,13 @@ export default function Cirrhosis(){
     {
       id:"treatment",
       title: "Tratamiento",
+      icon: "💊",
       content: (
           <div className="submodel-card">
              <h3>Tratamiento</h3>
              <LiverModel
-               modelPath="/modelos/pills-bottle.glb"
-               scale={6.5}
+               modelPath="/modelos/liver-transplant-treatment.glb"
+               scale={1.5}
              />
              <ul>
                <li>Transplante de hígado.</li>
@@ -73,7 +77,12 @@ export default function Cirrhosis(){
 
   return (
       <div className="cirrhosis-section">
-         <h1>¿Qué es el Cirrosis Hepática?</h1>
+        <div className="page-header">
+          <h1>¿Qué es la Cirrosis Hepática?</h1>
+          <Link to="/organo" className="nav-button">
+            ✨ Ver Hígado Sano
+          </Link>
+        </div>
          <p className="intro">
          La cirrosis hepática, también conocida como cirrosis, es la formación severa de cicatrices en el hígado, 
          cada vez que hay uan lesión en el hígado, ya sea por el consumo de alcohol o otras causa como una infección, 
@@ -85,7 +94,7 @@ export default function Cirrhosis(){
            <div className="cirrhosis-main-model">
             <LiverModel
                modelPath="/modelos/cirrhosis-liver.glb"
-               scale={2.5}
+               scale={3}
              />
            </div>
            <div className="cirrhosis-text">
