@@ -103,7 +103,7 @@ export default function Cirrhosis(){
             <SceneModel
                modelPath="/modelos/cirrhosis-liver.glb"
                showInstructions={showInformation}
-               scale={[0.1, 0.1, 0.1]}
+               scale={[5, 5, 5]}
              />
            </div>
            <div className="cirrhosis-text">
