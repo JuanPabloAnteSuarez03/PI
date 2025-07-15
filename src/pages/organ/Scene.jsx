@@ -30,7 +30,7 @@ function responsive(){
     return screen
 };
 
-function Information({path, instructions, position = [0,1,0], screen}){
+function Information({path, instructions, position = [0,1,0], screen, scale}){
     const{ scene } = useGLTF(path);
     const modelRef = useRef();
     const [rotation, setRotation] = useState(true);
@@ -76,7 +76,7 @@ function Information({path, instructions, position = [0,1,0], screen}){
     <primitive
         ref={modelRef}
         object={scene}
-        scale={path.includes("healthy-liver.glb") ? [0.7, 0.7, 0.7] : getModelScale()}
+        scale={scale ? scale : (path.includes("healthy-liver.glb") ? [0.7, 0.7, 0.7] : getModelScale())}
         position={modelPosition}
         onClick={() => setInformation(true)}
         onPointerMissed = {() => setInformation(false)}
@@ -181,6 +181,7 @@ function Information({path, instructions, position = [0,1,0], screen}){
     export default function SceneModel({
         modelPath = "/placeholder.svg?height=400&width=400",
         showInstructions =  false,
+        scale
     }){
         const screen = responsive();
         const [modelPosition, setModelPosition] = useState([0,1,0])
@@ -236,6 +237,7 @@ function Information({path, instructions, position = [0,1,0], screen}){
                         instructions={showInstructions}
                         position={modelPosition}
                         screen={screen}
+                        scale={scale}
                      />
                 </Canvas>
             </div>

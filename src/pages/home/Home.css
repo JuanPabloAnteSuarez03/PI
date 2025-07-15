@@ -144,7 +144,7 @@
     }
     .hero-model-container {
         grid-row: 1; /* Pone el modelo arriba en móvil */
-        height: 400px;
+        height: 600px;
     }
 }
 

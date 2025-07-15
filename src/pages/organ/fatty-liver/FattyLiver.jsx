@@ -107,7 +107,7 @@ export default function FattyLiver(){
             <SceneModel
                 modelPath="/modelos/fatty-liver-disease.glb"
                 showInstructions={showInformation}
-                scale={[3,3,3]}
+                scale={[1,1,1]}
              />
            </div>
            <div className="fattyliver-text">

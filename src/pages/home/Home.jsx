@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import LiverModel from '../organ/LiverModel';
+import SceneModel from '../organ/Scene';
 import './Home.css';
 
 const Home = () => {
@@ -20,7 +21,8 @@ const Home = () => {
                     </Link>
                 </div>
                 <div className="hero-model-container">
-                    <LiverModel modelPath="/modelos/healthy-liver.glb" scale={2.8} />
+                    {/* <LiverModel modelPath="/modelos/healthy-liver.glb" scale={2.8} /> */}
+                    <SceneModel modelPath="/modelos/healthy-liver.glb" showInstructions={true} scale={[10, 10, 10]} />
                 </div>
             </header>
 
