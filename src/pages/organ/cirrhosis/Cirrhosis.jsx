@@ -1,13 +1,21 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import './Cirrhosis.css';
+import "../Scene.css";
 import LiverModel from '../LiverModel';
+import SceneModel from '../Scene';
 
 export default function Cirrhosis(){
   const [activeTab, setActiveTab] = useState("prevention");
+  const [showInformation, setInformation] = useState(false);
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId)
+  }
+
+  const handleInformation = () => {
+    setInformation(!showInformation)
+    setShowInformation(false)
   }
 
   const tabs = [
@@ -19,8 +27,8 @@ export default function Cirrhosis(){
            <div className="submodel-card">
              <h3>Prevención</h3>
              <LiverModel
-               modelPath="/modelos/drinking-prevention.glb"
-               scale={1.5}
+               modelPath="/modelos/liquor-bottle.glb"
+               scale={4.5}
              />
              <ul>
                <li>Limitar el consumo de alcohol.</li>
@@ -39,7 +47,7 @@ export default function Cirrhosis(){
           <div className="submodel-card">
               <h3>Síntomas</h3>
               <LiverModel
-                modelPath="/modelos/jaundice-symtomp.glb"
+                modelPath="/modelos/kidney.glb"
                 scale={1.5}
               />
               <ul>
@@ -61,8 +69,8 @@ export default function Cirrhosis(){
           <div className="submodel-card">
              <h3>Tratamiento</h3>
              <LiverModel
-               modelPath="/modelos/liver-transplant-treatment.glb"
-               scale={1.5}
+               modelPath="/modelos/pills-bottle.glb"
+               scale={10.5}
              />
              <ul>
                <li>Transplante de hígado.</li>
@@ -92,9 +100,10 @@ export default function Cirrhosis(){
    
          <div className="cirrhosis-content">
            <div className="cirrhosis-main-model">
-            <LiverModel
+            <SceneModel
                modelPath="/modelos/cirrhosis-liver.glb"
-               scale={3}
+               showInstructions={showInformation}
+               scale={[0.1, 0.1, 0.1]}
              />
            </div>
            <div className="cirrhosis-text">

@@ -2,13 +2,21 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
 import './FattyLiver.css';
+import "../Scene.css";
 import LiverModel from '../LiverModel';
+import SceneModel from '../Scene';
 
 export default function FattyLiver(){
   const [activeTab, setActiveTab] = useState("prevention");
+  const [showInformation, setInformation] = useState(false);
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId)
+  }
+
+  const handleInformation = () => {
+    setInformation(!showInformation)
+    setShowInformation(false)
   }
 
   const tabs = [
@@ -96,9 +104,10 @@ export default function FattyLiver(){
    
          <div className="fattyliver-content">
            <div className="fattyliver-main-model">
-            <LiverModel
-               modelPath="/modelos/fatty-liver-disease.glb"
-               scale={0.8}
+            <SceneModel
+                modelPath="/modelos/fatty-liver-disease.glb"
+                showInstructions={showInformation}
+                scale={[3,3,3]}
              />
            </div>
            <div className="fattyliver-text">
